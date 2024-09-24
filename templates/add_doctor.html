@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הוספת רופא חדש</title>
+    <link rel="stylesheet" href="/static/css/function.css">
+</head>
+<body>
+<div class="container">
+    <h1>הוספת רופא חדש</h1>
+    <form action="/add_doctor" method="post">
+        <label for="doctor_name">שם הרופא:</label>
+        <input type="text" id="doctor_name" name="name" required>
+
+        <label for="seniority">ותק (שנים):</label>
+        <input type="number" id="seniority" name="seniority" required>
+
+        <label for="age">גיל:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="category">קטגוריה (תחום התמחות):</label>
+        <select id="category" name="category" required>
+            <option value="התייעצות עם רופא">התייעצות עם רופא</option>
+            <option value="מחסן">מחסן</option>
+            <option value="אחות">אחות</option>
+            <option value="רופא מומחה">רופא מומחה</option>
+        </select>
+
+
+        <label for="image_url">קישור לתמונה:</label>
+        <input type="url" id="image_url" name="image_url" required> <!-- שדה חובה -->
+
+        <button type="submit">הוסף רופא</button>
+    </form>
+</div>
+</body>
+</html>
+
+

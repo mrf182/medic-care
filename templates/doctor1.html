@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/doctor.css">
+    <title>Profile Page</title>
+</head>
+<body>
+    <div class="container">
+        <!-- כפתור הוספה -->
+        <form action="/add_doctor" method="get">
+            <button type="submit">Add Doctor</button>
+        </form>
+
+        <!-- כפתור עריכה -->
+        <form action="/edit_doctor/1" method="get">
+            <button type="submit">Edit</button>
+        </form>
+
+        <!-- כפתור מחיקה -->
+        <form action="/delete_doctor/1" method="post">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+</body>
+</html>
+
