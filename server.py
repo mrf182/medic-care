@@ -76,19 +76,22 @@ def edit_doctor_route(doctor_id):
         return redirect(url_for("index"))
     return render_template("edit_doctor.html", doctor=doctor)  # מעביר את פרטי הרופא לתבנית
 
-# עמוד התחברות
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         # קבלת שם המשתמש והסיסמה מהטופס
-        username = request.form["username"]
-        password = request.form["password"]
+        username = request.form.get("username")
+        password = request.form.get("password")
 
         # בדיקה אם שם המשתמש והסיסמה נכונים
         if username == "admin" and password == "123456":
-            return render_template("admin.html")  # הפניה לעמוד admin.html אם זה מנהל
+            # שליפת כל הרופאים מה-DB
+            doctors = Doctor.query.all()
+            # הפניה לעמוד admin.html עם רשימת הרופאים
+            return render_template("admin.html", doctors=doctors)
         else:
-            return redirect(url_for("index"))  # הפניה לעמוד index.html אם לא
+            return redirect(url_for("index"))  # הפניה לעמוד index.html אם לא מנהל
 
     return render_template("login.html")  # הצגת עמוד ההתחברות אם הבקשה היא GET
 
