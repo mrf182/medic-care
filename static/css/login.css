@@ -97,5 +97,35 @@ button:hover {
     background-color: #1e90ff; /* Background color on hover */
     color: white; /* Text color on hover */
 }
+.error-message {
+  color: red;
+  font-size: 12px; /* Smaller font size for error messages */
+  margin-top: 5px;
+}
+.password-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.password-container input {
+    padding-right: 40px; /* Add padding to make space for the icon */
+}
+
+
+
+
+.password-container i {
+    position: absolute;
+    right: 10px; /* Position the icon inside the input */
+    top: 50%; /* Center the icon vertically */
+    transform: translateY(-100%); /* Adjust to center the icon */
+    cursor: pointer; /* Change cursor to pointer for clickable icon */
+    color: #1e90ff; /* Icon color */
+    border solid 2px red
+}
+
+p{
+margin-top :20px
+}
 
 

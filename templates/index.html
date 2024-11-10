@@ -7,11 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Medic Care Bootstrap 5 CSS Template</title>
+    <title>Medic Care</title>
 
     <!-- CSS FILES -->
     <link rel="stylesheet" href="/static/css/index.css">
-
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +25,6 @@
     <link href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/templatemo-medic-care.css') }}" rel="stylesheet">
 </head>
-
-
 <body id="top">
 
 <main>
@@ -58,7 +55,7 @@
                         <a class="nav-link" href="#timeline">Timeline</a>
                     </li>
 
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="#reviews">Testimonials</a>
                     </li>
 
@@ -76,21 +73,12 @@
                     </li>
 
 
-                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_new_doctor') }}">
-                            add
-                        </a>
-                    </li>
-
                     <!-- אייקון התחברות -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}">
                             <i class="fas fa-sign-in-alt"></i> Login
                         </a>
                     </li>
-
-
-
                 </ul>
             </div>
         </div>
@@ -130,8 +118,8 @@
                             </div>
                         </h1>
 
-                        <p class="mb-4">Medic Care is a Bootstrap 5 Template provided by TemplateMo website. Credits go
-                            to FreePik and RawPixel for images used in this template.</p>
+                        <!--                        <p class="mb-4">Medic Care is a Bootstrap 5 Template provided by TemplateMo website. Credits go-->
+                        <!--                            to FreePik and RawPixel for images used in this template.</p>-->
 
                         <div class="heroLinks d-flex flex-wrap align-items-center">
                             <a class="custom-link me-4" href="#about" data-hover="Learn More">Learn More</a>
@@ -148,13 +136,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12">
-                    <h2 class="mb-lg-3 mb-3">Meet Dr. Carson</h2>
-                    <p>Protect yourself and others by wearing masks and washing hands frequently. Outdoor is safer than
-                        indoor for gatherings or holding events. People who get sick with Coronavirus disease (COVID-19)
-                        will experience mild to moderate symptoms and recover without special treatments.</p>
-                    <p>You can feel free to use this CSS template for your medical profession or health care related
-                        websites. You can <a rel="nofollow" href="http://paypal.me/templatemo" target="_blank">support
-                            us a little</a> via PayPal if this template is good and useful for your work.</p>
+                    <h2 class="mb-lg-3 mb-3">About Us</h2>
+                    <p>
+                        Welcome to Corona Clinic, where we prioritize your health and well-being, especially during
+                        challenging times. Our clinic is backed by extensive experience in handling cases related to
+                        COVID-19, guiding patients with care and expertise. We are here to support you in every
+                        way—whether it's vaccination, preventive care, or addressing any concerns you may have.
+                        <br>
+                        <br>
+                        <br>
+                        At Medic Care Clinic, we believe that staying informed and prepared is key to protecting our
+                        community. Trust us to provide the highest standard of care, and remember, your health is our
+                        mission. We look forward to seeing you soon, for your vaccination or any health-related
+                        needs!</p>
                 </div>
 
                 <div class="col-lg-4 col-md-5 col-12 mx-auto">
@@ -166,79 +160,30 @@
         </div>
     </section>
 
-    <!--doctors-->
-    <!--<section class="gallery">-->
-    <!--                <div class="container">-->
-    <!--                    <div class="row justify-content-center">-->
-    <!--                        <div class="col-lg-6 col-6 pe-2">-->
-    <!--                            <div class="image-container">-->
-    <!--                                <img src="https://www.odzchut.co.il/wp-content/uploads/2020/03/121991996_s.jpg.webp" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">-->
-    <!--                              <a href="{{ url_for('doctor1') }}" class="overlay-btn">READ MORE</a>-->
 
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                        <div class="col-lg-6 col-6 ps-2">-->
-    <!--                            <div class="image-container">-->
-    <!--                                 <img src="https://www.odzchut.co.il/wp-content/uploads/2020/03/121991996_s.jpg.webp"class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">-->
-    <!--                                <a href="{{ url_for('doctor2') }}" class="overlay-btn">READ MORE</a>-->
-
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                        <div class="col-lg-6 col-6 pe-2">-->
-    <!--                            <div class="image-container">-->
-    <!--                                <img src="https://online-learning-college.com/wp-content/uploads/2023/01/Qualifications-to-Become-a-Doctor&#45;&#45;scaled.jpg" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">-->
-    <!--                                <a href="{{ url_for('doctor3') }}" class="overlay-btn">READ MORE</a>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                        <div class="col-lg-6 col-6 ps-2">-->
-    <!--                            <div class="image-container">-->
-    <!--                                <img src="https://img.freepik.com/premium-photo/photo-happy-doctor-man-celebrating-success-white-background_182527-5102.jpg" class="img-fluid galleryImage" alt="get a vaccine" title="get a vaccine for yourself">-->
-    <!--                              <a href="{{ url_for('doctor4') }}" class="overlay-btn">READ MORE</a>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </section>-->
-    <!-- Doctors Section -->
-    <!-- Doctors Section -->
-   <section class="section-padding" id="doctors">
-    <div class="container">
-        <h2 class="text-center mb-lg-5 mb-4">Our Doctors</h2>
-        <div class="row">
-            {% for doctor in doctors %}
-            <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="card shadow">
-                    <img src="{{ doctor.dr_image_url or 'default_image_url.jpg' }}"
-                         class="card-img-top" alt="{{ doctor.dr_name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ doctor.dr_name }}</h5>
-                        <p class="card-text">קטגוריה: {{ doctor.dr_category }}<br> גיל: {{ doctor.dr_age }}<br> ותק:
-                            {{ doctor.dr_seniority }}</p>
-
-                        <div class="d-flex justify-content-between mt-3">
-                            <a href="{{ url_for('doctor1', doctor_id=doctor.dr_id) }}"
-                               class="btn btn-primary btn-sm">קרא עוד</a>
-                            <form action="{{ url_for('delete_doctor_route', doctor_id=doctor.dr_id) }}"
-                                  method="POST"
-                                  style="display: inline;">
-                                <button type="submit" class="btn"
-                                        style="border: none; background: none; cursor: pointer;">
-                                    <i class="fas fa-trash-alt" style="color: black; font-size: 20px;"></i>
-                                </button>
-                            </form>
-                            <a href="{{ url_for('edit_doctor_route', doctor_id=doctor.dr_id) }}" class="btn"
-                               style="border: none; background: none;">
-                                <i class="fas fa-pencil-alt" style="color: blue; font-size: 20px;"></i>
-                            </a>
+    <section class="section-padding" id="doctors">
+        <div class="container">
+            <h2 class="text-center mb-lg-5 mb-4">Our Doctors</h2>
+            <div class="row">
+                {% for doctor in doctors %}
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="card shadow">
+                        <img src="{{ doctor.dr_image_url or 'default_image_url.jpg' }}"
+                             class="card-img-top" alt="{{ doctor.dr_name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ doctor.dr_name }}</h5>
+                            <p class="card-text">category: {{ doctor.dr_category }}<br> age: {{ doctor.dr_age }}<br>
+                                seniority:
+                                {{ doctor.dr_seniority }}</p>
                         </div>
+                        <a href="{{ url_for('doctor1', doctor_id=doctor.dr_id) }}"
+                           class="btn btn-primary btn-sm">READ MORE</a>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
-</section>
-
+    </section>
 
 
     <!--timeLine-->
@@ -319,10 +264,207 @@
             </div>
         </div>
     </section>
+    <section class="section-padding pb-0" id="reviews">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12">
+                    <h2 class="text-center mb-lg-5 mb-4">Our Patients</h2>
+
+                    <div class="owl-carousel reviews-carousel">
+
+                        <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                            <div class="reviews-stars">
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star"></i>
+                            </div>
+
+                            <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Best Health Care</strong></p>
+
+                            <p class="reviews-text w-100">Phasellus ligula ante, tempus ac imperdiet ut, mattis ac nibh.
+                                Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                                mus.</p>
+
+                            <img src="/static/images/reviews/beautiful-woman-face-portrait-brown-background.jpeg"
+                                 class="img-fluid reviews-image" alt="">
+
+                            <figcaption class="ms-4">
+                                <strong>Marie</strong>
+
+                                <span class="text-muted">Patient</span>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                            <div class="reviews-stars">
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star"></i>
+                            </div>
+
+                            <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Doctor cares everyone!</strong></p>
+
+                            <p class="reviews-text w-100">Donec in elementum orci, nec posuere ligula. Quisque vulputate
+                                diam et ullamcorper ullamcorper. Pellentesque vestibulum neque at leo fermentum
+                                mattis.</p>
+
+                            <img src="/static/images/reviews/senior-man-wearing-white-face-mask-covid-19-campaign-with-design-space.jpeg"
+                                 class="img-fluid reviews-image" alt="">
+
+                            <figcaption class="ms-4">
+                                <strong>Ben Walker</strong>
+
+                                <span class="text-muted">Recovered</span>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                            <div class="reviews-stars">
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                            </div>
+
+                            <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Great services!</strong></p>
+
+                            <p class="reviews-text w-100">Vestibulum ante ipsum primis in faucibus orci luctus et
+                                ultrices posuere cubilia curae; Donec sit amet velit vitae purus aliquam efficitur.</p>
+
+                            <img src="/static/images/reviews/portrait-british-woman.jpeg"
+                                 class="img-fluid reviews-image" alt="">
+
+                            <figcaption class="ms-4">
+                                <strong>Laura Zono</strong>
+
+                                <span class="text-muted">New Patient</span>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="reviews-thumb d-flex flex-wrap align-items-center rounded">
+                            <div class="reviews-stars">
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star-fill"></i>
+                                <i class="bi-star"></i>
+                                <i class="bi-star"></i>
+                            </div>
+
+                            <p class="text-primary d-block mt-2 mb-0 w-100"><strong>Best Advices</strong></p>
+
+                            <p class="reviews-text w-100">Integer posuere erat a ante venenatis dapibus posuere velit
+                                aliquet. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor
+                                fringilla.</p>
+
+                            <img src="/static/images/reviews/woman-wearing-mask-face-closeup-covid-19-green-background.jpeg"
+                                 class="img-fluid reviews-image" alt="">
+
+                            <figcaption class="ms-4">
+                                <strong>Rosey</strong>
+
+                                <span class="text-muted">Almost Recovered</span>
+                            </figcaption>
+                        </figure>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="booking">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-12 mx-auto">
+                    <div class="booking-form">
+                        <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
+
+                        <!-- תצוגת הודעות flash -->
+                        <div id="flash-message" style="display:none; color: green; font-weight: bold;"></div>
+
+                        <form id="appointment-form" onsubmit="bookAppointment(event)">
+                            <div class="row">
+                                <div class="col-lg-6 col-12">
+                                    <input type="text" name="name" id="name" class="form-control"
+                                           placeholder="Full name" required>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <select name="doctor_name" id="doctor_name" class="form-control" required>
+                                        <option value="" disabled selected>Select a doctor</option>
+                                        {% for doctor in doctors %}
+                                        <option value="{{ doctor.dr_name }}">{{ doctor.dr_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*"
+                                           class="form-control" placeholder="Email address" required>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <input type="telephone" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{7}"
+                                           class="form-control" placeholder="Phone: 052-1234567">
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <input type="date" name="date" id="date" value="" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                <textarea class="form-control" rows="5" id="message" name="message"
+                                          placeholder="Additional Message"></textarea>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                                    <button type="submit" class="form-control" id="submit-button">Book Now</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+function bookAppointment(event) {
+    event.preventDefault();  // מניעת שליחה רגילה של הטופס
+
+    const formData = new FormData(document.getElementById("appointment-form"));
+
+    fetch("/book", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // הצגת ההודעה בעמוד אם התקבלה תשובה מוצלחת
+        const flashMessage = document.getElementById("flash-message");
+        flashMessage.style.display = "block";
+        flashMessage.textContent = data.message;
+
+        // איפוס הטופס
+        document.getElementById("appointment-form").reset();
+
+        // הסתרה של ההודעה אחרי מספר שניות
+        setTimeout(() => {
+            flashMessage.style.display = "none";
+        }, 3000);
+    })
+    .catch(error => {
+        console.error("Error booking appointment:", error);
+    });
+}
+
+
+
+    </script>
 
 
 </main>
-
 
 <footer class="site-footer section-padding" id="contact">
     <div class="container">

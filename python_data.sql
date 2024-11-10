@@ -107,3 +107,49 @@ ALTER TABLE [dbo].[doctors]
 ADD [dr_image_url] VARCHAR(255) NULL;
 GO
 
+USE [python_data]
+GO
+ALTER TABLE [dbo].[doctors]
+ADD [dr_description] VARCHAR(MAX) NULL;
+GO
+
+CREATE TABLE users (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    is_robot BIT NOT NULL DEFAULT 0
+);
+
+DROP TABLE IF EXISTS [appointments];
+GO
+
+CREATE TABLE [appointments] (
+    appointment_id INT IDENTITY(1,1) PRIMARY KEY,
+    client_name VARCHAR(100) NOT NULL,
+    doctor_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    date DATE NOT NULL,
+    message TEXT
+);
+GO
+
+use[python_data]
+Go
+SELECT * FROM users;
+GO
+
+
+use[python_data]
+Go
+SELECT * FROM doctors;
+GO
+
+use[python_data]
+Go
+SELECT * FROM appointments;
+GO
+
+DELETE FROM appointments;
+DBCC CHECKIDENT ('appointments', RESEED, 0);
