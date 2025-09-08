@@ -2,17 +2,17 @@ from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, 
 from sqlalchemy.orm import sessionmaker
 from werkzeug.security import generate_password_hash
 
-# הגדרת מחרוזת החיבור
-DATABASE_URI = 'mssql+pyodbc://@DESKTOP-24EQMFH/python_data?driver=SQL+Server&Trusted_Connection=yes'
+DATABASE_URI = (
+    "mssql+pyodbc://@localhost\\SQLEXPRESS/python_data"
+    "?driver=ODBC+Driver+17+for+SQL+Server"
+    "&Trusted_Connection=yes"
+)
 
-engine = create_engine(DATABASE_URI)
-
-# Session = sessionmaker(bind=engine)
-# session = Session()
+engine = create_engine(DATABASE_URI, future=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-metadata = MetaData()
+metadata = MetaData(schema="dbo")
 
 # טבלת הרופאים כולל עמודת התמונה
 doctors = Table('doctors', metadata,
