@@ -10,7 +10,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from database import doctors, session  # חשוב: doctors הוא Table מתוך MetaData(schema="dbo") אם יש
 
-# תיקיית יעד לשמירת קבצי תמונה
+
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 UPLOAD_DIR = os.path.join(PROJECT_ROOT, "static", "uploads")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -36,15 +36,12 @@ DATA_URI_RE = re.compile(r"^data:image/(png|jpeg|jpg);base64,(.+)$", re.IGNORECA
 
 
 def _store_data_uri_if_needed(image_value: Optional[str]) -> Optional[str]:
-    """
-    אם קיבלנו Data-URI (base64...), נשמור לקובץ ונחזיר נתיב קצר /static/uploads/<file>.
-    אם זה URL רגיל/ריק — נחזיר כמו שהוא.
-    """
+
     if not image_value:
         return None
     m = DATA_URI_RE.match(image_value)
     if not m:
-        # לא Data URI → נשמור את מה שנשלח (למשל URL מלא או נתיב יחסי קצר)
+
         return image_value
 
     ext = m.group(1).lower()
@@ -54,7 +51,7 @@ def _store_data_uri_if_needed(image_value: Optional[str]) -> Optional[str]:
     try:
         blob = base64.b64decode(raw)
     except Exception:
-        # אם הדטה פגום, אפשר להחזיר None או לזרוק. נבחר None כדי לא להפיל את כל הפעולה.
+
         return None
 
     fname = f"{uuid.uuid4().hex}.{ext}"
@@ -62,7 +59,7 @@ def _store_data_uri_if_needed(image_value: Optional[str]) -> Optional[str]:
     with open(fpath, "wb") as f:
         f.write(blob)
 
-    # מה שנשמור ב־DB:
+
     return f"/static/uploads/{fname}"
 
 
@@ -94,10 +91,7 @@ def delete_doctor(doctor_id):
 
 
 def update_doctor(doctor_id, name, seniority, age, category, image_url, description):
-    """
-    אם image_url ריק/None — לא נחליף את התמונה.
-    אם הוא Data-URI — נשמור לקובץ ונעדכן לנתיב הקצר.
-    """
+
     to_set = {
         "dr_name": _to_str_or_none(name),
         "dr_seniority": _to_int_or_none(seniority),
@@ -110,7 +104,6 @@ def update_doctor(doctor_id, name, seniority, age, category, image_url, descript
     if img is not None and img != "":
         to_set["dr_image_url"] = _store_data_uri_if_needed(img)
 
-    # ננקה None-ים שלא רוצים לדרוס איתם (אופציונלי; אם כן רוצים לדרוס ל-NULL, הסירי את הסינון)
     to_set = {k: v for k, v in to_set.items() if v is not None}
 
     try:

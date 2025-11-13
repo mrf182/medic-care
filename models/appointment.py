@@ -1,4 +1,4 @@
-# models/appointment.py
+
 from sqlalchemy import select, insert
 from datetime import datetime, date as date_cls
 from database import Session, appointments, engine
@@ -26,14 +26,14 @@ def add_appointment(client_name, doctor_name, email, phone, date, message):
         "message": (message or None),
     }
 
-    # עבודה נקייה עם Session
+
     with Session.begin() as session:
         session.execute(insert(appointments).values(**values))
     print("Appointment added successfully!")
 
 
 def get_appointments(as_dict=True):
-    # עדיף להשתמש ב-Session גם לקריאה
+
     with Session() as session:
         q = select(appointments).order_by(appointments.c.appointment_id.desc())
         res = session.execute(q)

@@ -1,6 +1,6 @@
 // Handle registration form submission
 document.getElementById('registrationForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
     const formData = new FormData(this);
     fetch('/register', {
@@ -22,8 +22,8 @@ document.getElementById('registrationForm').addEventListener('submit', function 
         if (data.success) {
             messageElement.innerHTML = '<div class="alert alert-success">Registration successful!</div>';
             setTimeout(() => {
-                window.location.href = '/'; // Redirect to index page
-            }, 2000); // Redirect after 2 seconds
+                window.location.href = '/';
+            }, 2000);
         } else {
             messageElement.innerHTML = '<div class="alert alert-danger">' + data.message + '</div>';
         }
