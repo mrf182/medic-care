@@ -117,7 +117,73 @@
                                 <span class="animated-item">lives</span>
                             </div>
                         </h1>
-                        
+
+                        <div class="heroLinks d-flex flex-wrap align-items-center">
+                            <a class="custom-link me-4" href="#about" data-hover="Learn More">Learn More</a>
+
+                            <p class="contact-phone mb-0"><i class="bi-phone"></i> 010-020-0340</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <h2 class="mb-lg-3 mb-3">About Us</h2>
+                    <p>
+                        Welcome to Corona Clinic, where we prioritize your health and well-being, especially during
+                        challenging times. Our clinic is backed by extensive experience in handling cases related to
+                        COVID-19, guiding patients with care and expertise. We are here to support you in every
+                        way—whether it's vaccination, preventive care, or addressing any concerns you may have.
+                        <br>
+                        <br>
+                        <br>
+                        At Medic Care Clinic, we believe that staying informed and prepared is key to protecting our
+                        community. Trust us to provide the highest standard of care, and remember, your health is our
+                        mission. We look forward to seeing you soon, for your vaccination or any health-related
+                        needs!</p>
+                </div>
+
+                <div class="col-lg-4 col-md-5 col-12 mx-auto">
+                    <div class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
+                        <p class="featured-text"><span class="featured-number">12</span> Years<br> of Experiences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-padding" id="doctors">
+        <div class="container">
+            <h2 class="text-center mb-lg-5 mb-4">Our Doctors</h2>
+            <div class="row">
+                {% for doctor in doctors %}
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="card shadow">
+                        <img src="{{ doctor.dr_image_url or 'default_image_url.jpg' }}"
+                             class="card-img-top" alt="{{ doctor.dr_name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ doctor.dr_name }}</h5>
+                            <p class="card-text">category: {{ doctor.dr_category }}<br> age: {{ doctor.dr_age }}<br>
+                                seniority:
+                                {{ doctor.dr_seniority }}</p>
+                        </div>
+                        <a href="{{ url_for('doctor1', doctor_id=doctor.dr_id) }}"
+                           class="btn btn-primary btn-sm">READ MORE</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+    <!--timeLine-->
     <section class="section-padding pb-0" id="timeline">
         <div class="container">
             <div class="row">

@@ -27,59 +27,59 @@
     <link href="{{ url_for('static', filename='css/templatemo-medic-care.css') }}" rel="stylesheet">
 
     <style>
-    body {
-        background-color: #f4f4f9;
-        color: #333;
-    }
-    h1 {
-        color: var(--dark-color);
-    }
-    .table-container {
-        display: flex;
-        justify-content: center;
-        padding: 20px;
-    }
-    table {
-        width: 80%;
-        border-collapse: collapse;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-    }
-    th, td {
-        padding: 12px 15px;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-    }
-    thead th {
-        background-color: #fff;
-        color: black;
-        font-weight: bold;
-    }
-    tbody tr:hover {
-        background-color: #f1f1f1;
-    }
-    tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    .highlight {
-        color: black;
-        font-weight: bold;
-    }
-    .table-date {
-        width: 150px;
-    }
-    .table-phone {
-        width: 150px;
-    }
-    .table-name {
-        width: 200px;
-    }
-    .table-dname {
-        width: 200px;
-    }
-    .table-message {
-        width: 350px;
-    }
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: var(--dark-color);
+        }
+        .table-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        thead th {
+            background-color: #fff;
+            color: black;
+            font-weight: bold;
+        }
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .highlight {
+            color: black;
+            font-weight: bold;
+        }
+        .table-date {
+            width: 150px;
+        }
+        .table-phone {
+            width: 150px;
+        }
+        .table-name {
+            width: 200px;
+        }
+        .table-dname {
+            width: 200px;
+        }
+        .table-message {
+            width: 350px;
+        }
 
     </style>
 </head>
@@ -358,8 +358,10 @@
                 <th class="table-phone">Phone</th>
                 <th class="table-date">Date</th>
                 <th class="table-message">Message</th>
+                <th>Actions</th>
             </tr>
             </thead>
+
             <tbody>
             {% for appointment in appointments %}
             <tr>
@@ -370,13 +372,57 @@
                 <td>{{ appointment.phone }}</td>
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.message }}</td>
+
+                <td>
+                    <!-- כפתור אייקון שמפעיל מודאל -->
+                    <button type="button" class="btn p-0"
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteModal{{ appointment.appointment_id }}"
+                            title="Delete appointment">
+                        <i class="fas fa-trash-alt" style="color: black; transition: 0.3s;"></i>
+                    </button>
+                </td>
             </tr>
+
+            <!-- 🔥 זה המקום שבו המודל נכנס — מתחת לשורה של הפגישה -->
+            <div class="modal fade" id="deleteModal{{ appointment.appointment_id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirm Deletion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            Are you sure you want to delete the appointment with
+                            <strong>{{ appointment.client_name }}</strong>
+                            on <strong>{{ appointment.date }}</strong>?
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cancel
+                            </button>
+
+                            <form method="post"
+                                  action="{{ url_for('delete_appointment_route', appointment_id=appointment.appointment_id) }}">
+                                <button type="submit" class="btn btn-dark">
+                                    Yes, Delete
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
             {% endfor %}
             </tbody>
+
         </table>
     </div>
-    <br>
-    <br>
+    <br><br>
 
 
     <footer class="site-footer section-padding" id="contact">

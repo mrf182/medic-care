@@ -5,8 +5,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from database import session as db_session, doctors
 from models.user import get_user_by_username, get_user_by_email, add_user
 from models.doctor import update_doctor, delete_doctor, add_doctor
-from models.appointment import add_appointment, get_appointments
-
+from models.appointment import add_appointment, get_appointments, delete_appointment
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
@@ -39,6 +38,11 @@ def book():
 
     return jsonify({"success": True, "message": "The session was successfully saved"})
 
+@app.route("/delete_appointment/<int:appointment_id>", methods=["POST"])
+def delete_appointment_route(appointment_id):
+    delete_appointment(appointment_id)
+    flash("The appointment was successfully deleted.", "success")
+    return redirect(url_for("admin_page"))
 
 @app.route("/doctor1/<int:doctor_id>")
 def doctor1(doctor_id):

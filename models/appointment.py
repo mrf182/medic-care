@@ -1,5 +1,5 @@
 
-from sqlalchemy import select, insert
+from sqlalchemy import select, insert,delete
 from datetime import datetime, date as date_cls
 from database import Session, appointments, engine
 
@@ -38,3 +38,10 @@ def get_appointments(as_dict=True):
         q = select(appointments).order_by(appointments.c.appointment_id.desc())
         res = session.execute(q)
         return res.mappings().all() if as_dict else res.fetchall()
+
+def delete_appointment(appointment_id: int):
+    with Session.begin() as session:
+        session.execute(
+            delete(appointments).where(appointments.c.appointment_id == appointment_id)
+        )
+    print(f"Appointment with ID {appointment_id} deleted successfully.")
