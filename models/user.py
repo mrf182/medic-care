@@ -38,6 +38,7 @@ def get_all_users_with_appointment_count():
             users.c.id,
             users.c.username,
             users.c.email,
+            users.c.phone,
             users.c.is_blocked,
             users.c.join_date,
             func.count(appointments.c.appointment_id).label("appointment_count")
@@ -46,6 +47,7 @@ def get_all_users_with_appointment_count():
         .group_by(
             users.c.id,
             users.c.username,
+            users.c.phone,
             users.c.email,
             users.c.is_blocked,
             users.c.join_date

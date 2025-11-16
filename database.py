@@ -32,6 +32,7 @@ users = Table('users', metadata,
               Column('password', String(255), nullable=False),
               Column('email', String(100), nullable=False, unique=True),
               Column('is_blocked', Boolean, default=False),
+              Column('phone', String(11), default=False),
               Column('join_date', DateTime, default=datetime.utcnow))
 
 

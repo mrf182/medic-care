@@ -1,7 +1,7 @@
 
-from sqlalchemy import select, insert,delete
+from sqlalchemy import select, insert,delete,update
 from datetime import datetime, date as date_cls
-from database import Session, appointments, engine
+from database import Session, appointments, users
 
 
 def _coerce_date(value) -> date_cls:
@@ -16,6 +16,9 @@ def _coerce_date(value) -> date_cls:
     raise ValueError(f"bad date format: {value!r}")
 
 
+
+
+
 def add_appointment(client_name, doctor_name, email, phone, date, message):
     values = {
         "client_name": (client_name or "").strip(),
@@ -26,10 +29,22 @@ def add_appointment(client_name, doctor_name, email, phone, date, message):
         "message": (message or None),
     }
 
-
     with Session.begin() as session:
         session.execute(insert(appointments).values(**values))
-    print("Appointment added successfully!")
+
+        user_stmt = select(users.c.email, users.c.phone).where(users.c.email == values["email"])
+        user_result = session.execute(user_stmt).mappings().fetchone()
+
+        if user_result:
+            if not user_result["phone"] and values["phone"]:
+                update_stmt = (
+                    update(users)
+                    .where(users.c.email == values["email"])
+                    .values(phone=values["phone"])
+                )
+                session.execute(update_stmt)
+
+    print("Appointment added and user phone updated if needed.")
 
 
 def get_appointments(as_dict=True):
