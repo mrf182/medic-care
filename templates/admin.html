@@ -1,25 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>Medic Care</title>
 
     <!-- CSS FILES -->
     <link rel="stylesheet" href="/static/css/index.css">
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS from the 'static' directory -->
+    <!-- Bootstrap & Template CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
@@ -31,9 +24,6 @@
             background-color: #f4f4f9;
             color: #333;
         }
-        h1 {
-            color: var(--dark-color);
-        }
         .table-container {
             display: flex;
             justify-content: center;
@@ -42,8 +32,8 @@
         table {
             width: 80%;
             border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         th, td {
             padding: 12px 15px;
@@ -62,378 +52,305 @@
             background-color: #f9f9f9;
         }
         .highlight {
-            color: black;
             font-weight: bold;
+            color: black;
         }
-        .table-date {
-            width: 150px;
-        }
-        .table-phone {
-            width: 150px;
-        }
-        .table-name {
-            width: 200px;
-        }
-        .table-dname {
-            width: 200px;
-        }
-        .table-message {
-            width: 350px;
-        }
-
     </style>
 </head>
 
 <body id="top">
-
 <main>
 
-    <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
-        <div class="container">
-            <a class="navbar-brand mx-auto d-lg-none" href="{{ url_for('index') }}">
-                Medic Care
-                <strong class="d-block">Health Specialist</strong>
-            </a>
+<!-- 🧭 NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+    <div class="container">
+        <a class="navbar-brand mx-auto d-lg-none" href="{{ url_for('index') }}">
+            Medic Care
+            <strong class="d-block">Health Specialist</strong>
+        </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#hero">Home</a>
-                    </li>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active"><a class="nav-link" href="#hero">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#timeline">Timeline</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reviews">Testimonials</a></li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
+                <a class="navbar-brand d-none d-lg-block" href="{{ url_for('index') }}">
+                    Medic Care
+                    <strong class="d-block">Health Specialist</strong>
+                </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#timeline">Timeline</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#reviews">Testimonials</a>
-                    </li>
-
-                    <a class="navbar-brand d-none d-lg-block" href="{{ url_for('index') }}">
-                        Medic Care
-                        <strong class="d-block">Health Specialist</strong>
-                    </a>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#booking">Booking</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_new_doctor') }}">
-                            add
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('login') }}">
-                            <i class="fas fa-sign-in-alt"></i> Login
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('add_new_doctor') }}">Add</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+<!-- 👨‍⚕️ Doctors Section -->
+<section class="section-padding" id="doctors">
+    <div class="container">
+        <h2 class="text-center mb-lg-5 mb-4">Our Doctors</h2>
+        <div class="row">
+            {% for doctor in doctors %}
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="card shadow">
+                    <img src="{{ doctor.dr_image_url or 'default_image_url.jpg' }}"
+                         class="card-img-top" alt="{{ doctor.dr_name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ doctor.dr_name }}</h5>
+                        <p class="card-text">
+                            Category: {{ doctor.dr_category }}<br>
+                            Age: {{ doctor.dr_age }}<br>
+                            Seniority: {{ doctor.dr_seniority }}
+                        </p>
+                        <div class="d-flex justify-content-between mt-3">
+                            <!-- 🔎 View -->
+                            <a href="{{ url_for('doctor1', doctor_id=doctor.dr_id) }}"
+                               class="btn btn-primary btn-sm">READ MORE</a>
 
-
-    <section class="hero" id="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ url_for('static', filename='images/slider/portrait-successful-mid-adult-doctor-with-crossed-arms.jpg') }}"
-                                     class="img-fluid" alt="">
-                            </div>
-
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='images/slider/young-asian-female-dentist-white-coat-posing-clinic-equipment.jpg') }}"
-                                     class="img-fluid" alt="">
-                            </div>
-
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='images/slider/doctor-s-hand-holding-stethoscope-closeup.jpg') }}"
-                                     class="img-fluid" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="heroText d-flex flex-column justify-content-center">
-                        <h1 class="mt-auto mb-2">
-                            Better
-                            <div class="animated-info">
-                                <span class="animated-item">health</span>
-                                <span class="animated-item">days</span>
-                                <span class="animated-item">lives</span>
-                            </div>
-                        </h1>
-
-
-                        <div class="heroLinks d-flex flex-wrap align-items-center">
-                            <a class="custom-link me-4" href="#about" data-hover="Learn More">Learn More</a>
-
-                            <p class="contact-phone mb-0"><i class="bi-phone"></i> 010-020-0340</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="section-padding" id="doctors">
-        <div class="container">
-            <h2 class="text-center mb-lg-5 mb-4">Our Doctors</h2>
-            <div class="row">
-                {% for doctor in doctors %}
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="card shadow">
-                        <img src="{{ doctor.dr_image_url or 'default_image_url.jpg' }}"
-                             class="card-img-top" alt="{{ doctor.dr_name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ doctor.dr_name }}</h5>
-                            <p class="card-text">category: {{ doctor.dr_category }}<br> age: {{ doctor.dr_age }}<br>
-                                seniority:
-                                {{ doctor.dr_seniority }}</p>
-
-                            <div class="d-flex justify-content-between mt-3">
-                                <a href="{{ url_for('doctor1', doctor_id=doctor.dr_id) }}"
-                                   class="btn btn-primary btn-sm">READ MORE</a>
-                                <form action="{{ url_for('delete_doctor_route', doctor_id=doctor.dr_id) }}"
-                                      method="POST"
-                                      style="display: inline;">
-                                    <button type="submit" class="btn"
-                                            style="border: none; background: none; cursor: pointer;">
-                                        <i class="fas fa-trash-alt" style="color: black; font-size: 20px;"></i>
-                                    </button>
-                                </form>
-                                <a href="{{ url_for('edit_doctor_route', doctor_id=doctor.dr_id) }}" class="btn"
-                                   style="border: none; background: none;">
-                                    <i class="fas fa-pencil-alt" style="color: blue; font-size: 20px;"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-
-    <body>
-    <h2 class="text-center mb-lg-5 mb-4">Meeting list</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-            <tr>
-                <th>Meeting number</th>
-                <th class="table-name">Client's name</th>
-                <th class="table-dname">Doctor's name</th>
-                <th class="table-email">Email address</th>
-                <th class="table-phone">Phone</th>
-                <th class="table-date">Date</th>
-                <th class="table-message">Message</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {% for appointment in appointments %}
-            <tr>
-                <td class="highlight">{{ appointment.appointment_id }}</td>
-                <td>{{ appointment.client_name }}</td>
-                <td>{{ appointment.doctor_name }}</td>
-                <td>{{ appointment.email }}</td>
-                <td>{{ appointment.phone }}</td>
-                <td>{{ appointment.date }}</td>
-                <td>{{ appointment.message }}</td>
-
-                <td>
-                    <!-- כפתור אייקון שמפעיל מודאל -->
-                    <button type="button" class="btn p-0"
-                            data-bs-toggle="modal"
-                            data-bs-target="#deleteModal{{ appointment.appointment_id }}"
-                            title="Delete appointment">
-                        <i class="fas fa-trash-alt" style="color: black; transition: 0.3s;"></i>
-                    </button>
-                </td>
-            </tr>
-
-            <!-- 🔥 זה המקום שבו המודל נכנס — מתחת לשורה של הפגישה -->
-            <div class="modal fade" id="deleteModal{{ appointment.appointment_id }}" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-                            <h5 class="modal-title">Confirm Deletion</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-
-                        <div class="modal-body">
-                            Are you sure you want to delete the appointment with
-                            <strong>{{ appointment.client_name }}</strong>
-                            on <strong>{{ appointment.date }}</strong>?
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Cancel
-                            </button>
-
-                            <form method="post"
-                                  action="{{ url_for('delete_appointment_route', appointment_id=appointment.appointment_id) }}">
-                                <button type="submit" class="btn btn-dark">
-                                    Yes, Delete
+                            <!-- 🗑️ Delete -->
+                            <form method="POST"
+                                  action="{{ url_for('delete_doctor_route', doctor_id=doctor.dr_id) }}"
+                                  style="display:inline;">
+                                <button type="submit" class="btn"
+                                        style="border: none; background: none; cursor: pointer;">
+                                    <i class="fas fa-trash-alt" style="color: black; font-size: 20px;"></i>
                                 </button>
                             </form>
-                        </div>
 
+                            <!-- ✏️ Edit -->
+                            <a href="{{ url_for('edit_doctor_route', doctor_id=doctor.dr_id) }}"
+                               class="btn" style="border: none; background: none;">
+                                <i class="fas fa-pencil-alt" style="color: blue; font-size: 20px;"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-
             {% endfor %}
-            </tbody>
-
-        </table>
+        </div>
     </div>
-    <br><br>
-    <h2 class="text-center mb-lg-5 mb-4">User List</h2>
+</section>
+<!-- 📅 Appointments Section -->
+<section class="section-padding">
+    <h2 class="text-center mb-lg-5 mb-4">Meeting list</h2>
+
     <div class="table-container">
         <table>
             <thead>
-            <tr>
-                <th>User ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Join Date</th>
-                <th>Appointments</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
+                <tr>
+                    <th>Meeting #</th>
+                    <th>Client's Name</th>
+                    <th>Doctor's Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Date</th>
+                    <th>Message</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for appointment in appointments %}
+                <tr>
+                    <td class="highlight">{{ appointment.appointment_id }}</td>
+                    <td>{{ appointment.client_name }}</td>
+                    <td>{{ appointment.doctor_name }}</td>
+                    <td>{{ appointment.email }}</td>
+                    <td>{{ appointment.phone }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.message }}</td>
+                    <td>
+                        <!-- 🗑️ Delete Button (Modal trigger) -->
+                        <button type="button" class="btn p-0"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteAppointmentModal{{ appointment.appointment_id }}"
+                                title="Delete appointment">
+                            <i class="fas fa-trash-alt" style="color: black;"></i>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 🧨 Delete Modals for Appointments -->
+    {% for appointment in appointments %}
+    <div class="modal fade" id="deleteAppointmentModal{{ appointment.appointment_id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    Are you sure you want to delete the appointment with
+                    <strong>{{ appointment.client_name }}</strong>
+                    on <strong>{{ appointment.date }}</strong>?
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form method="post"
+                          action="{{ url_for('delete_appointment_route', appointment_id=appointment.appointment_id) }}">
+                        <button type="submit" class="btn btn-dark">Yes, Delete</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<!-- 👥 Users Section -->
+<section class="section-padding">
+    <h2 class="text-center mb-lg-5 mb-4">User List</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Join Date</th>
+                    <th>Appointments</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
             </thead>
             <tbody>
             {% for user in users %}
-            <tr>
-                <td class="highlight">{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.phone or '—' }}</td>
-                <td>{{ user.join_date.strftime("%Y-%m-%d") if user.join_date else '—' }}</td>
-                <td>{{ user.appointment_count or 0 }}</td>
-                <td>
-                    {% if user.is_blocked %}
-                    <span style="color: red;">Blocked</span>
-                    {% else %}
-                    <span style="color: green;">Active</span>
-                    {% endif %}
-                </td>
-                <td>
-                    <form method="post" action="{{ url_for('toggle_block_user', user_id=user.id) }}"
-                          style="display:inline;">
-                        <button type="submit" class="btn btn-sm"
-                                style="border: none; background: none; cursor: pointer;"
-                                title="{{ 'Unblock' if user.is_blocked else 'Block' }}">
-                            {% if user.is_blocked %}
-                            <i class="fas fa-unlock" style="color: green;"></i>
-                            {% else %}
-                            <i class="fas fa-ban" style="color: red;"></i>
-                            {% endif %}
-                        </button>
-                    </form>
+                <tr>
+                    <td class="highlight">{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone or '—' }}</td>
+                    <td>{{ user.join_date.strftime("%Y-%m-%d") if user.join_date else '—' }}</td>
+                    <td>{{ user.appointment_count or 0 }}</td>
+                    <td>
+                        {% if user.is_blocked %}
+                            <span style="color: red;">Blocked</span>
+                        {% else %}
+                            <span style="color: green;">Active</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <!-- 🚫 Block/Unblock Button -->
+                        <form method="post" action="{{ url_for('toggle_block_user', user_id=user.id) }}" style="display:inline;">
+                            <button type="submit" class="btn btn-sm"
+                                    style="border: none; background: none; cursor: pointer;"
+                                    title="{{ 'Unblock' if user.is_blocked else 'Block' }}">
+                                {% if user.is_blocked %}
+                                    <i class="fas fa-unlock" style="color: green;"></i>
+                                {% else %}
+                                    <i class="fas fa-ban" style="color: red;"></i>
+                                {% endif %}
+                            </button>
+                        </form>
 
-                    <form method="post" action="{{ url_for('delete_user', user_id=user.id) }}"
-                          style="display:inline;"
-                          onsubmit="return confirm('Are you sure you want to delete this user?');">
-                        <button type="submit" class="btn btn-sm"
-                                style="border: none; background: none; cursor: pointer;" title="Delete user">
+                        <!-- 🗑️ Delete Button (Modal trigger) -->
+                        <button type="button" class="btn p-0"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteUserModal{{ user.id }}"
+                                title="Delete user">
                             <i class="fas fa-trash-alt" style="color: black;"></i>
                         </button>
-                    </form>
-                </td>
-            </tr>
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-    <br><br>
 
+    <!-- 🧨 Delete Modals for Users -->
+    {% for user in users %}
+    <div class="modal fade" id="deleteUserModal{{ user.id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-    <footer class="site-footer section-padding" id="contact">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-5 me-auto col-12">
-                    <h5 class="mb-lg-4 mb-3">Opening Hours</h5>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex">
-                            Sunday : Closed
-                        </li>
-
-                        <li class="list-group-item d-flex">
-                            Monday, Tuesday - Friday
-                            <span>8:00 AM - 3:30 PM</span>
-                        </li>
-
-                        <li class="list-group-item d-flex">
-                            Saturday
-                            <span>10:30 AM - 5:30 PM</span>
-                        </li>
-                    </ul>
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm User Deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
-                <div class="col-lg-2 col-md-6 col-12 my-4 my-lg-0">
-                    <h5 class="mb-lg-4 mb-3">Our Clinic</h5>
-
-                    <p><a href="mailto:hello@company.co">hello@company.co</a>
-                    <p>
-                    <p>123 Digital Art Street, San Diego, CA 92123</p>
+                <div class="modal-body">
+                    Are you sure you want to delete user <strong>{{ user.username }}</strong>?
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-12 ms-auto">
-                    <h5 class="mb-lg-4 mb-3">Socials</h5>
-
-                    <ul class="social-icon">
-                        <li><a href="#" class="social-icon-link bi-facebook"></a></li>
-                        <li><a href="#" class="social-icon-link bi-twitter"></a></li>
-                        <li><a href="#" class="social-icon-link bi-instagram"></a></li>
-                        <li><a href="#" class="social-icon-link bi-youtube"></a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-12 ms-auto mt-4 mt-lg-0">
-                    <p class="copyright-text">Copyright © Medic Care 2021
-                        <br><br>Design: <a href="https://templatemo.com" target="_parent">TemplateMo</a></p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form method="post" action="{{ url_for('delete_user', user_id=user.id) }}">
+                        <button type="submit" class="btn btn-dark">Yes, Delete</button>
+                    </form>
                 </div>
 
             </div>
         </div>
-    </footer>
+    </div>
+    {% endfor %}
+</section>
+<!-- 🔚 Footer -->
+<footer class="site-footer section-padding" id="contact">
+    <div class="container">
+        <div class="row">
 
-    <!-- JAVASCRIPT FILES -->
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/owl.carousel.min.js"></script>
-    <script src="/static/js/scrollspy.min.js"></script>
-    <script src="/static/js/custom.js"></script>
+            <div class="col-lg-5 me-auto col-12">
+                <h5 class="mb-lg-4 mb-3">Opening Hours</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex">Sunday : Closed</li>
+                    <li class="list-group-item d-flex">Mon - Fri <span>8:00 AM - 3:30 PM</span></li>
+                    <li class="list-group-item d-flex">Saturday <span>10:30 AM - 5:30 PM</span></li>
+                </ul>
+            </div>
 
+            <div class="col-lg-2 col-md-6 col-12 my-4 my-lg-0">
+                <h5 class="mb-lg-4 mb-3">Our Clinic</h5>
+                <p><a href="mailto:hello@company.co">hello@company.co</a></p>
+                <p>123 Digital Art Street, San Diego, CA 92123</p>
+            </div>
 
- </html>
+            <div class="col-lg-3 col-md-6 col-12 ms-auto">
+                <h5 class="mb-lg-4 mb-3">Socials</h5>
+                <ul class="social-icon">
+                    <li><a href="#" class="social-icon-link bi-facebook"></a></li>
+                    <li><a href="#" class="social-icon-link bi-twitter"></a></li>
+                    <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+                    <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-12 ms-auto mt-4 mt-lg-0">
+                <p class="copyright-text">
+                    © Medic Care 2021<br><br>
+                    Design: <a href="https://templatemo.com" target="_parent">TemplateMo</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+</main>
+
+<!-- 🔗 JavaScript Files -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/scrollspy.min.js"></script>
+<script src="/static/js/custom.js"></script>
+
+</body>
+</html>
 
