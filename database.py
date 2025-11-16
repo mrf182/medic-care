@@ -1,4 +1,6 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Text, Date, select, Boolean
+from datetime import datetime
+
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Text, Date, select, Boolean, DateTime
 from sqlalchemy.orm import sessionmaker
 
 
@@ -27,9 +29,13 @@ doctors = Table('doctors', metadata,
 users = Table('users', metadata,
               Column('id', Integer, primary_key=True),
               Column('username', String(50), nullable=False, unique=True),
-              Column('password', String(255), nullable=False),  # Plain password
+              Column('password', String(255), nullable=False),
               Column('email', String(100), nullable=False, unique=True),
-              Column('is_robot', Boolean, default=False))  # Robot check column
+              Column('is_blocked', Boolean, default=False),
+              Column('join_date', DateTime, default=datetime.utcnow))
+
+
+
 
 metadata.create_all(engine)
 
