@@ -4,16 +4,16 @@ from sqlalchemy.orm import sessionmaker
 
 
 DATABASE_URI = (
-    "mssql+pyodbc://@localhost\\SQLEXPRESS/python_data"
-    "?driver=ODBC+Driver+17+for+SQL+Server"
-    "&Trusted_Connection=yes"
+     "sqlite:///mydb.sqlite3"
+
 )
 
 engine = create_engine(DATABASE_URI, future=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-metadata = MetaData(schema="dbo")
+metadata = MetaData()
+
 
 
 doctors = Table('doctors', metadata,
