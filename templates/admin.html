@@ -178,7 +178,7 @@
                         </button>
                         <!--Email Link-->
                         <a href="mailto:{{ appointment.email | urlencode }}?subject={{ ('Appointment Reminder - ' ~ appointment.date) | urlencode }}&body={{ ('Hello ' ~ appointment.client_name ~ ',\n\nThis is a reminder for your appointment with Dr. ' ~ appointment.doctor_name ~ ' on ' ~ appointment.date ~ '.\n\nThank you,\nMedic Care') | urlencode }}">
-                            <i class="fas fa-envelope" style="color: green; margin-left: 10px;" title="Send Email"></i>
+                            <i class="fas fa-envelope" style="color: blue; margin-left: 10px;" title="Send Email"></i>
                         </a>
 
 
