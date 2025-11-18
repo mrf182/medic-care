@@ -17,8 +17,10 @@ Built with **Flask**, **SQLAlchemy Core**, and **Bootstrap**.
 
 
 **Admin Login**
--  Email: `admin@admin.com`  
--  Password: `admin12`
+
+| User Name       | Password                         |
+|-------------|-------------------------------------|
+| admin|123456|
 
 > ⏳ *First load might be slow (Render cold start)*
 
@@ -66,10 +68,7 @@ Built with **Flask**, **SQLAlchemy Core**, and **Bootstrap**.
 -  Doctor management (CRUD + image upload)
 -  Appointment scheduling with email reminders
 -  User management (block/unblock, validation)
--  "mailto:" reminders
 -  Responsive UI (Bootstrap 5)
-
-> Backend: **Flask**, **SQLAlchemy Core**, **SQLite** (with migration scripts for SQL Server)
 
 ---
 
@@ -90,17 +89,16 @@ Built with **Flask**, **SQLAlchemy Core**, and **Bootstrap**.
 
 
 
-medic-care/
-│
-├── app/                   # Main Flask app
-│   ├── static/            # CSS, JS, images, fonts, GIFs
-│   ├── templates/         # Jinja2 templates
-│   └── server.py          # Entry point
-│
-├── models/                # SQLAlchemy Core definitions
-├── README.md
-├── requirements.txt
-└── schema.sql             # Optional SQL Server schema
+medic-care/<br>
+│ <br>
+├── app/               # Main Flask app <br>
+│   ├── static/        # CSS, JS, images, fonts, GIFs <br>
+│   ├── templates/     # Jinja2 templates <br>
+│   └── server.py      # Entry point <br>
+├── models/            # SQLAlchemy Core definitions  <br>
+├── README.md <br>
+├── requirements.txt <br>
+└── Python_db.sql         # Optional SQL Server schema <br>
 
 ## 💡 How it Works 
 
@@ -108,17 +106,9 @@ medic-care/
 2. **Appointment data** is stored in the database and becomes visible in the admin dashboard.
 3. **Admin** can view, delete, or send email reminders to patients.
 
-<p align="center">
-  <img src="./app/static/gifs/הוספת פגישה .gif" width="400">
-  <br>
-  <sub>Patient booking an appointment (Client view)</sub>
-</p>
-
-<p align="center">
-  <img src="./app/static/gifs/מייל.gif" width="400">
-  <br>
-  <sub>Admin sending email reminder (Admin panel)</sub>
-</p>
+| Patient booking an appointment (Client view) | Admin sending email reminder |
+|------------------------|--------------------------|
+| <img src="./app/static/gifs/הוספת פגישה .gif" alt="Client adding an appointment" width="400"> | <img src="./app/static/gifs/מייל.gif" alt="Admin sending Email reminder doctor" width="400"> |
 
 
 
@@ -196,33 +186,21 @@ pip install -r requirements.txt
 python app/server.py
 
 ```
-📷 Screenshots & GIFs
+## 📷 Screenshots & GIFs
 Login
  <br>
 <p align="center"> <img src="./app/static/images/עמוד מנהל .png" width="600" alt="Admin Login"> </p>
  <br>
-Doctor CRUD
- <br>
-<p align="center">  <img src="./app/static/gifs/עריכת רופא .gif" width="400"> 
-  
-   <br>
- <sub> admin editing a doctor</sub>
-   <br>
-  <img src="./app/static/gifs/מחיקת רופא .gif" width="400"> </p>
 
- <br>
-<div align="center">
-        <sub>admin deleting a doctor</sub>
-  <br>
-   <br>
-Appointment 
- <br>
-<p align="center"> <img src="./app/static/gifs/הוספת פגישה .gif" width="400">
-<br>
- <sub>Client booking an appointment</sub>
-  <br>
+### Doctor CRUD
 
-📥 Example: Add Doctor
+| admin editing a doctor | admin deleting a doctor |
+|------------------------|--------------------------|
+| <img src="./app/static/gifs/עריכת רופא .gif" alt="Admin editing a doctor" width="400"> | <img src="./app/static/gifs/מחיקת רופא .gif" alt="Admin deleting a doctor" width="400"> |
+
+
+
+## 📥 Example: Add Doctor
 ```
 def add_doctor(name, seniority, age, category, image_url, description):
     values = {
@@ -236,23 +214,27 @@ def add_doctor(name, seniority, age, category, image_url, description):
     session.execute(insert(doctors).values(**values))
     session.commit()
  ```
+ 📄 Source: [`/app/models/doctor.py`](./app/models/doctor.py)
+
 Password Hashing
 ```
 from werkzeug.security import generate_password_hash
 
 hashed = generate_password_hash(password, method='pbkdf2:sha256', salt_length=16)
 ```
+📄 Source: [`/app/models/user.py`](./app/models/user.py)
+
 ## 🚀 Planned Enhancements
 
- **PWA support for mobile use
+ - PWA support for mobile use
 
- **Analytics dashboard for appointments
+ - Analytics dashboard for appointments
 
- **Search and filter for appointments
+ - Search and filter for appointments
 
- **Multi-language support
+ - Multi-language support
 
- **WebSocket alerts
+ - WebSocket alerts
 
 ## 🧾 License
 
@@ -265,11 +247,13 @@ This project was originally created as a final assignment for a Python backend c
 
 If further developed beyond the course scope, I would prioritize the following real-world improvements:
 
-- **Preventing overlapping appointments** – to avoid scheduling conflicts for the same doctor  
-- **Validating past-date entries** – ensuring appointments can't be scheduled in the past  
-- **Role-based access control** – supporting roles like receptionist and doctor with limited access  
+- Preventing overlapping appointments – to avoid scheduling conflicts for the same doctor
+- Validating past-date entries – ensuring appointments can't be scheduled in the past
+- Medical history tracking – allowing the system to store and present each patient's journey
+- Post-visit summaries – enabling doctors to document visit outcomes and follow-ups
+- Patient access to visit summaries – allowing clients to view the summary of their latest appointments
+- Separate internal dashboard for staff – providing a streamlined interface for medical and administrative personnel
 
-These features are not yet implemented, but are planned for future development.
 
 ---
 
